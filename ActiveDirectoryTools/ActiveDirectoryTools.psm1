@@ -250,7 +250,7 @@ Function Import-GPOPermissionsFromJson {
 		}
 
         $Drive = New-PSDrive -Name $TempDrive -Root "" -PSProvider ActiveDirectory -Server $Domain @CredSplat
-		Push-Location -Path "$Drive`:\"
+
 
 		$GPOs = Get-GPO -All -Domain $Domain -Server $Domain
 
@@ -625,7 +625,7 @@ Function Export-GPOPermissions {
 		}
 
         $Drive = New-PSDrive -Name $TempDrive -Root "" -PSProvider ActiveDirectory -Server $Domain @CredSplat
-		Push-Location -Path "$Drive`:\"
+		
 
 		foreach ($GPO in $GPOs) 
 		{
@@ -2201,7 +2201,7 @@ Function Set-SDPropSchedule {
 
 		if ($Seconds -lt 3600)
 		{
-			$ConfirmMessage = "Setting the frequency to less than 3600 seconds (1 hour) could have potential LSASS performance ramifications in a large environment, i.e. doing this could cause your DC’s processor to spike to very high sustained levels and drastically hurt you."
+			$ConfirmMessage = "Setting the frequency to less than 3600 seconds (1 hour) could have potential LSASS performance ramifications in a large environment, i.e. doing this could cause your DCÂ’s processor to spike to very high sustained levels and drastically hurt you."
 		}
 
 		if ($Force -or $PSCmdlet.ShouldProcess($WhatIfDescription, $ConfirmMessage, $ConfirmCaption))
@@ -2494,7 +2494,7 @@ Function Set-ADObjectAcl {
 
                 $Drive = New-PSDrive -Name $TempDrive -Root "" -PSProvider ActiveDirectory -Server "$($DC.Name).$($DC.Domain)" @CredSplat
 
-				Push-Location -Path "$Drive`:\"
+				
 
 				switch ($PSCmdlet.ParameterSetName)
 				{
